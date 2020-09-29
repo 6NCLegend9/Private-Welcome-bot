@@ -11,7 +11,7 @@
  
  ## Author project (aka owner) NC_Legend#2147
  
-## Add to Discord
+## Discord
 Click [here](https://discord.gg/sy6Jrze) to contact project owner server. 
 
 ## License
