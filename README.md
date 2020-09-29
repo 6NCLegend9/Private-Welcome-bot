@@ -15,4 +15,4 @@
 Click [here](https://discord.gg/sy6Jrze) to contact project owner server. 
 
 ## License
-This project is licensed under the Apache License Public License v2.0 - see the [LICENSE](http://www.apache.org/licenses/) file for details.
+This project is licensed under the Apache License Public License v2.0 - see the [LICENSE](LICENSE) file for details.
