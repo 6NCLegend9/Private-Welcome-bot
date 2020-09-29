@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const Canvas = require('canvas');
 
 const { MessageEmbed } = require('discord.js');
-const config = require('./data/config.json');
+const config = require('./config.json');
 
 const client = new Discord.Client();
 
