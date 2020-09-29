@@ -14,8 +14,6 @@
 	},
   "author": "NC_Legend",
   "license": "Apache"
-  "bugs": {
-		"url": "https://github.com/6NCLegend9/Private-Welcome-bot/issues"
 	},
 	"homepage": "https://github.com/6NCLegend9/Private-Welcome-bot/blob/master/README.md",
 	"engines": {
