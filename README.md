@@ -7,7 +7,7 @@
 <div align="center">
   
   
- This code is for made for 1 server and not multi server's
+ This code is for 1 server and not multi server's
  
  ## Author project (aka owner) NC_Legend#2147
  
