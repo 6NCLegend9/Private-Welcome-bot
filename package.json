@@ -1,4 +1,26 @@
 {
+  "name": "private-welcome-bot",
+  "version": "2.4.02",
+  "description": "a discord Private Welcome bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "pretest": "eslint --ignore-path .gitignore .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/6NCLegend9/Private-Welcome-bot.git"
+	},
+  "author": "NC_Legend",
+  "license": "Apache"
+  "bugs": {
+		"url": "https://github.com/6NCLegend9/Private-Welcome-bot/issues"
+	},
+	"homepage": "https://github.com/6NCLegend9/Private-Welcome-bot/blob/master/README.md",
+	"engines": {
+		"node": ">=12"
+	},
   "dependencies": {
     "express": "^4.17.1",
     "discord.js": "^12.0.0",
@@ -7,4 +29,11 @@
   "scripts": {
     "start": "node index.js"
   }
+}
+	"eslintConfig": {
+		"extends": "amber",
+		"plugins": [
+			"json"
+		]
+	}
 }
