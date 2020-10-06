@@ -7,24 +7,7 @@ const config = require('./config.json');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    	console.log('Log as Cloud  Alpha#8386');
-
- const activities = [
-    { name: 'Welcome to `server name', type: 'LISTENING' }, 
-    { name: '#Welcome', type: 'WATCHING' }
-  ];
-
-  client.user.setPresence({ status: 'online', activity: activities[0] });
-  let activity = 1;
-
-  // Update activity every 30 seconds
-  setInterval(() => {
-    activities[2] = { name: `Cloud bots!`, type: 'WATCHING' };
-     activities[3] = { name: `${client.users.cache.size} users`, type: 'WATCHING' };
-    if (activity > 3) activity = 0;
-    client.user.setActivity(activities[activity]);
-    activity++;
-  }, 30000);
+    	console.log(`Logged in as ${client.user.tag}!`);
 });
 
 
