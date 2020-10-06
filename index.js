@@ -16,7 +16,8 @@ client.on('guildMemberAdd', async member => {
 	const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
 	if (!channel) return;
 
-	const canvas = Canvas.createCanvas(700, 250);
+  //You can change the Width and the Height	
+	const canvas = Canvas.createCanvas(700, 250); //default Width 700    default Heigth 250
 	const ctx = canvas.getContext('2d');
   
   // You can add change the image remove the old `wallpaper.jpg` file image and replace it with new
