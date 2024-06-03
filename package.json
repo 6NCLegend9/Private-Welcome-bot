@@ -1,6 +1,6 @@
 {
  "name": "private-welcome-bot",
- "version": "3.4.1",
+ "version": "10.0.8",
  "description": "a discord Private Welcome bot",
  "main": "index.js",
  "repository": {
@@ -10,15 +10,16 @@
  },
  "author": "NC_Legend",
  "license": "Apache",
- "engines": {
-  "node": ">=12"
- },
- "dependencies": {
-  "express": "^4.17.1",
-  "discord.js": "^12.0.0",
-  "canvas": "^2.6.0"
- },
- "scripts": {
-  "start": "node index.js"
- }
+{
+    "dependencies": {
+        "canvas": "^2.11.2",
+        "discord.js": "^14.15.1",
+        "express": "^4.17.1",
+        "react-timer-mixin": "^0.13.4",
+        "timers": "^0.1.1"
+    },
+    "scripts": {
+        "start": "node index.js"
+    }
 }
+
