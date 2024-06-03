@@ -1,0 +1,16 @@
+{
+  "token": "", //TOKEN
+  "welcome_channel": "", //Welcome Channel name
+  "embed_emoji": ":check:", //You can use you'r own custom emoji
+  "logchannel": "", //Channel for logs
+  "activity1": "NC_Legend is my creator",
+  "type1": "WATCHING",
+  "activity2": "", //You can add another activity here
+  "type2": "WATCHING",
+  "activitytime": "15000",
+  "customtext": "",
+  "embed_color": "ffffff", //Color for the embeds 
+  "embed_guildname": "", //Server Name
+  "webhook_id": "", //Webhook ID
+  "webhook_token": "" //Webhook token
+}
