@@ -1,7 +1,7 @@
 # Private-Welcome-bot
 
 <div align="center">
-    <img src="https://cdn.discordapp.com/attachments/635733569670479883/748923404438208614/loading-cloud.gif" width="800px" height="600px" /><br>
+    <img src="https://cdn.discordapp.com/avatars/357510381511639040/c8c458a1db78ce2cf9b54fee9bbb9125.webp?size=1024" width="800px" height="600px" /><br>
 </div>
 
 <div align="center">
