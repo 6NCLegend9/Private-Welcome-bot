@@ -12,7 +12,7 @@
  ## Author project (aka owner) NC_Legend#2147
  
 ## Discord
-Click [here](https://discord.gg/sy6Jrze) to contact project owner server. 
+Click [here](https://discord.gg/nwHQr4aBhX) to contact project owner server. 
 
 ## License
 This project is licensed under the Apache License Public License v2.0 - see the [LICENSE](LICENSE) file for details.
