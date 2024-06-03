@@ -1,74 +1,105 @@
-const Discord = require('discord.js');
+// const { Client, Intents , Discord ,MessageEmbed } = require('discord.js');
+const { Client ,GatewayIntentBits, Partials, AttachmentBuilder ,EmbedBuilder} = require('discord.js');
 const Canvas = require('canvas');
+const timers = require('timers');
+const config = require('./data/config.json');
+// const { Client, IntentsBitField } = require('discord.js');
 
-const { MessageEmbed } = require('discord.js');
-const config = require('./config.json');
+// Create a new instance of the Discord client
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.MessageContent
+  ],
+  partials: [Partials.Channel, Partials.Message, Partials.User, Partials.GuildMember, Partials.Reaction]
+})
+// Define activities
+const activities = [
+    { name: 'Welcome to Strony Kingdom', type: 'LISTENING' },
+    { name: '#Welcome', type: 'WATCHING' }
+];
+let activityIndex = 0;
+const activitytime = 30000; // Activity update interval in milliseconds
 
-const client = new Discord.Client();
-
+// On Ready
 client.on('ready', () => {
-    	console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`${client.user.username} has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
+    // Update activity every 30 seconds
+    setInterval(() => {
+        activityIndex = activityIndex === activities.length ? 0 : activityIndex;
+        client.user.setActivity(activities[activityIndex].name, { type: activities[activityIndex].type });
+        activityIndex++;
+    }, activitytime);
 });
 
+// On Message
+client.on("messageCreate", async message => {
+    if (message.author.bot) return; // Ignore bot messages
 
-
+// On MemberAdd
 client.on('guildMemberAdd', async member => {
-	const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
-	if (!channel) return;
+    const channel = testGuild.channels.cache.find(chnl => chnl.name === config.welcome_channel);
+        if (!channel) {
+            console.log("Set channel name in config.");
+            return;
+        }
 
-  //You can change the Width and the Height	
-	const canvas = Canvas.createCanvas(700, 250); //default Width 700    default Heigth 250
-	const ctx = canvas.getContext('2d');
-  
-  // You can add change the image remove the old `wallpaper.jpg` file image and replace it with new
-	const background = await Canvas.loadImage('./wallpaper.jpg');
-	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+        try {
+            const canvas = Canvas.createCanvas(700, 250);
+            const ctx = canvas.getContext('2d');
 
-	ctx.strokeStyle = '#74037b';
-	ctx.strokeRect(0, 0, canvas.width, canvas.height);
+            const background = await Canvas.loadImage('./wallpaper.jpg');
+            ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-	// Slightly smaller text placed above the member's display name
-	ctx.font = '24px sans-serif';
-	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Welcome to Cloud Support,', canvas.width / 1.5, canvas.height / 2.5);
+            ctx.strokeStyle = '#74037b';
+            ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
-	// Add an exclamation point here and below
-	ctx.font = applyText(canvas, `${member}!`);
-	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.user.tag}`, canvas.width / 2.5, canvas.height / 1.8);
+            ctx.font = '24px sans-serif';
+            ctx.fillStyle = '#000000';
+            ctx.fillText(`Welcome to ${testGuild.name}! ${testMember.displayName}`, 150, 200);
 
-	ctx.beginPath();
-	ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
-	ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 6;
-    ctx.stroke();
-    ctx.save();
-    ctx.closePath();
-    ctx.clip();
+            ctx.beginPath();
+            ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 6;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.clip();
 
-	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-	ctx.drawImage(avatar, 25, 25, 200, 200);
+            const avatar = await Canvas.loadImage(testMember.user.displayAvatarURL({ extension: 'jpg' }));
+            ctx.drawImage(avatar, 25, 25, 200, 200);
 
-	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
-	member.roles.add("635408314229981215");
-	
-	const embed = new Discord.MessageEmbed()
-	.setColor("#ffffff")
-.attachFiles(attachment)
-.setAuthor('member.user.tag')
-.setImage('attachment://welcome-image.png')
-.setDescription(`Welcome to ${message.guild.name}`);
-channel.send(embed)
+            const attachment = new AttachmentBuilder(canvas.toBuffer(), 'welcome-image.png');
 
-});
-client.on('guildMemberAdd', async member => {
-	const channel = member.guild.channels.cache.find(ch => ch.name === 'logs');
-channel.send(`:inbox_tray: **${member.user.tag}** (\`${member.id}\`) has just joined the server`)
-});
-client.on('guildMemberRemove', async member => {
-	const channel = member.guild.channels.cache.find(ch => ch.name === 'logs');
-channel.send(`:outbox_tray:  **${member.user.tag}** (\`${member.id}\`) has just left the server.`)
+            const embed = new EmbedBuilder()
+                .setColor("#00c6ff")
+                .setDescription(`Welcome to the server, ${testMember}!`)
+                .setImage('attachment://welcome-image.png');
+
+            channel.send({ embeds: [embed],files:[attachment] });
+
+            const logs = testGuild.channels.cache.find(chnl => chnl.name === config.logchannel);
+            if (logs) {
+                logs.send(`> :inbox_tray: ${testMember} **has Joined ${testGuild.name}.**`);
+            }
+        } catch (error) {
+            console.error('Error creating welcome canvas:', error);
+        }
+
+        return;
 });
 
+// On MemberRemove
+client.on('guildMemberRemove', member => {
+    const logs = member.guild.channels.cache.find(chnl => chnl.name === config.logchannel);
+    if (logs) {
+        logs.send(`> :outbox_tray: ${member.user.tag} **has left ${member.guild.name}.**`);
+    }
+});
 
+// Log Client In
 client.login(config.token);
