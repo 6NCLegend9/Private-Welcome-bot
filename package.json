@@ -8,6 +8,7 @@
   "url": "git+https://github.com/6NCLegend9/Private-Welcome-bot.git",
   "homepage": "https://github.com/6NCLegend9/Private-Welcome-bot/blob/master/README.md"
  },
+}
  "author": "NC_Legend",
  "license": "Apache",
 {
@@ -22,4 +23,5 @@
         "start": "node index.js"
     }
 }
+
 
