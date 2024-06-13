@@ -1,27 +1,24 @@
 {
- "name": "private-welcome-bot",
- "version": "10.0.8",
- "description": "a discord Private Welcome bot",
- "main": "index.js",
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/6NCLegend9/Private-Welcome-bot.git",
-  "homepage": "https://github.com/6NCLegend9/Private-Welcome-bot/blob/master/README.md"
- },
+  "name": "private-welcome-bot",
+  "version": "10.0.8",
+  "description": "A Discord Private Welcome bot",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/6NCLegend9/Private-Welcome-bot.git",
+    "homepage": "https://github.com/6NCLegend9/Private-Welcome-bot/blob/master/README.md"
+  },
+  "author": "NC_Legend",
+  "license": "Apache",
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "discord.js": "^14.15.1",
+    "express": "^4.17.1",
+    "react-timer-mixin": "^0.13.4",
+    "timers": "^0.1.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
 }
- "author": "NC_Legend",
- "license": "Apache",
-{
-    "dependencies": {
-        "canvas": "^2.11.2",
-        "discord.js": "^14.15.1",
-        "express": "^4.17.1",
-        "react-timer-mixin": "^0.13.4",
-        "timers": "^0.1.1"
-    },
-    "scripts": {
-        "start": "node index.js"
-    }
-}
-
 
